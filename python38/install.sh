@@ -175,8 +175,8 @@ switch_to_python38() {
     if [ ! -f /usr/bin/yum.bak ]; then
         cp /usr/bin/yum /usr/bin/yum.bak
     fi
-    sed -i '1s|#!/usr/bin/python|#!/usr/bin/python2.7|' /usr/bin/yum
-    sed -i '1s|#!/usr/bin/python|#!/usr/bin/python2.7|' /usr/libexec/urlgrabber-ext-down
+    sed -i '1c #!/usr/bin/python2.7' /usr/bin/yum
+    sed -i '1c #!/usr/bin/python2.7' /usr/libexec/urlgrabber-ext-down
     
     log "切换完成，当前默认版本: $(python -V 2>&1)" "$GREEN"
 }
@@ -322,8 +322,8 @@ compile_python() {
     if [ ! -f /usr/bin/yum.bak ]; then
         cp /usr/bin/yum /usr/bin/yum.bak
     fi
-    sed -i '1s|#!/usr/bin/python|#!/usr/bin/python2.7|' /usr/bin/yum
-    sed -i '1s|#!/usr/bin/python|#!/usr/bin/python2.7|' /usr/libexec/urlgrabber-ext-down
+    sed -i '1c #!/usr/bin/python2.7' /usr/bin/yum
+    sed -i '1c #!/usr/bin/python2.7' /usr/libexec/urlgrabber-ext-down
     
     # 设置PYTHONHOME
     echo "export PYTHONHOME=$INSTALL_DIR" | sudo tee -a /etc/profile
